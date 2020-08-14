@@ -27,6 +27,10 @@ type TextInputType = {
   onBlur?: any
 }
 
+// This component provides a generic wrapper for form inputs.
+// It supports a default validator, which assumes any field is required.
+// It also supports custom validators, which is used by the email input.
+
 export default function TextInput(props: TextInputType) {
   const validateField = (value: string): string | boolean => {
     let error;

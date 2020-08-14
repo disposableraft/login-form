@@ -5,6 +5,28 @@ import TextInput from "./text-input";
 import registerUser from "./register-user";
 import validateEmail from "./validate-email";
 
+/**
+ * LoginForm is the main component in this app. 
+ * 
+ * Features include: 
+ *   - asynchronous email validation; 
+ *   - basic form validations for an email string and checking that inputs contain 
+ *     at least one character;
+ *   - a disabled submit button until all form validations pass; success and error messages; 
+ *   - and responsive design.
+ * 
+ * One edge case I discovered is when an email has been submitted, but an account
+ * has not been created (?). In this case, the async email validation passes (that is,
+ * the server sends an "OK" and not an "EXISTS"), but when registration is submitted,
+ * the server response with "This email (foo@bar.com) address has already been 
+ * registered. Have you tried logging in?" I found this message from the server
+ * helpful and displayed it to the user in a message above the form.
+ * 
+ * There are many improvements that could be made. The first I would make would be to 
+ * redirect the successful registrant to the next page. Others would be to expand
+ * error handling. And consider the flow of data.
+ */
+
 type Inputs = {
   firstName: string;
   lastName: string;
@@ -22,16 +44,25 @@ export default function LoginForm() {
 
   const onSubmit = async (values: Inputs) => {
     const registration = await registerUser(values);
-    setMessage(registration.message);
+    if (registration.errors) {
+      // Yolo. Here I just take the first error message.
+      // Handling multiple errors here would make the login more robust.
+      // I could see breaking this out into its own error handling component.
+      setMessage(registration.errors[0].message);
+    } else {
+      setMessage(registration.message);
+    }
   };
 
   const isSubmitDisabled = (watchedFields: object): boolean => {
+    // Disable submit when none of the fields contain values
     if (Object.keys(watchedFields).length === 0) {
       return true;
     }
     const hasValue = (s: string): boolean => {
       return s.length > 0;
     };
+    // Check if all the fields have values and return the opposite.
     return !Object.values(watchedFields).every(hasValue);
   };
 
@@ -42,7 +73,7 @@ export default function LoginForm() {
     }
 
     let validEmail: { data: { status: string } } = Object();
-    
+    // A simple email test: Strings containing multiple periods and at-signs will pass.
     if (/\S+@\S+\.\S+/.test(email)) {
       validEmail = await validateEmail(email);
     } else {
@@ -73,6 +104,7 @@ export default function LoginForm() {
           errors={errors.email}
           register={register}
           validator={emailValidator}
+          // Trigger emailValidator when user exits the input
           onBlur={() => trigger("email")}
         />
 
@@ -99,6 +131,8 @@ export default function LoginForm() {
           errors={errors.lastName}
           register={register}
         />
+
+        {/* Disabling the submit button, given the correct conditions was a fun challenge. */}
 
         <Button
           isDisabled={isSubmitDisabled(watchAllFields) || !!errors.email}

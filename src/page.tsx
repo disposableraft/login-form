@@ -2,6 +2,9 @@ import * as React from "react";
 import LoginForm from "./login-form";
 import { Box, Text } from "@chakra-ui/core";
 
+// Having a page component is perhaps decomposing too much for this exercise,
+// but I think it demonstrates how I would go about organizing components irl.
+
 const Page = () => {
   return (
     <Box margin="auto" maxW="650px">

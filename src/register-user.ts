@@ -23,14 +23,13 @@ export default async function registerUser(values: Inputs) {
     body: JSON.stringify(payload),
   });
   return fetch(req)
-    .then((res) => {
-      return res.ok ? res.json() : new Error(`Error: ${res.status}; ${res}`);
-    })
-    .then((res) => {
-      console.debug(res);
-      return res;
+    .then((res) => res.json())
+    .then((data) => {
+      console.debug(data);
+      return data;
     })
     .catch((err) => {
       console.error(err);
+      return err;
     });
 }
