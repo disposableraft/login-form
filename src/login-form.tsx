@@ -25,7 +25,7 @@ export default function LoginForm() {
     setMessage(registration.message);
   };
 
-  const isSubmitDisabled = (watchedFields): boolean => {
+  const isSubmitDisabled = (watchedFields: object): boolean => {
     if (Object.keys(watchedFields).length === 0) {
       return true;
     }
@@ -36,19 +36,20 @@ export default function LoginForm() {
   };
 
   const emailValidator = async (email: string) => {
-    let error: string;
+    let error: string = String();
     if (!email) {
       error = "Email required";
     }
 
-    let validEmail: { data: { status: string } };
+    let validEmail: { data: { status: string } } = Object();
+    
     if (/\S+@\S+\.\S+/.test(email)) {
       validEmail = await validateEmail(email);
     } else {
       error = "Please enter a valid email";
     }
 
-    if (validEmail && validEmail.data.status === "EXISTS") {
+    if (validEmail.data && validEmail.data.status === "EXISTS") {
       error = `Email ${email} exists`;
     }
 

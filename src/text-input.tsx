@@ -10,15 +10,25 @@ import {
   Text,
 } from "@chakra-ui/core";
 
-const ValidatedIcon = (props) => {
+const ValidatedIcon = (props: { errors: boolean}) => {
   if (props.errors) {
     return <Icon name="warning" color="red.500" />;
   }
   return null;
 };
 
-export default function TextInput(props) {
-  const validateField = (value: string): boolean => {
+type TextInputType = {
+  errors: any,
+  name: string,
+  text: string,
+  type: string,
+  register?: any,
+  validator?: any,
+  onBlur?: any
+}
+
+export default function TextInput(props: TextInputType) {
+  const validateField = (value: string): string | boolean => {
     let error;
     if (!value) {
       error = "This field is required";
