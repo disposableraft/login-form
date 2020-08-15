@@ -10,7 +10,7 @@ const Page = () => {
     <Box margin="auto" maxW="650px">
       <Box mt={8}>
         <Text textAlign="center" color="#432CB3" as="h2">
-          Welcome to Raisley
+          Welcome to Raisely
         </Text>
         <LoginForm />
       </Box>
