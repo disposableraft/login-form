@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent, FocusEventHandler } from "react";
 import {
   Box,
   FormControl,
@@ -10,28 +10,36 @@ import {
   Text,
 } from "@chakra-ui/core";
 
-const ValidatedIcon = (props: { errors: boolean}) => {
-  if (props.errors) {
-    return <Icon name="warning" color="red.500" />;
-  }
-  return null;
-};
+interface IProps {
+  errors: boolean
+}
+
+const ValidatedIcon: FunctionComponent<IProps> = ({ errors }) =>
+  errors ? <Icon name="warning" color="red.500" /> : null;
 
 type TextInputType = {
-  errors: any,
-  name: string,
-  text: string,
-  type: string,
-  register?: any,
-  validator?: any,
-  onBlur?: any
-}
+  errors: any;
+  name: string;
+  text: string;
+  type: string;
+  register?: any;
+  validator?: any;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
+};
 
 // This component provides a generic wrapper for form inputs.
 // It supports a default validator, which assumes any field is required.
 // It also supports custom validators, which is used by the email input.
 
-export default function TextInput(props: TextInputType) {
+const TextInput: FunctionComponent<TextInputType> = ({
+  errors,
+  name,
+  text,
+  type,
+  register,
+  validator,
+  onBlur,
+}) => {
   const validateField = (value: string): string | boolean => {
     let error;
     if (!value) {
@@ -40,17 +48,17 @@ export default function TextInput(props: TextInputType) {
     return error || true;
   };
 
-  const errors = (): boolean => {
-    return props.errors ? true : false;
+  const error = (): boolean => {
+    return errors ? true : false;
   };
 
   return (
     <Box mb={4}>
-      <FormControl isInvalid={errors()}>
+      <FormControl isInvalid={error()}>
         <FormLabel fontSize="sm" color="#432CB3">
-          <Text as="span">{props.text}</Text>
+          <Text as="span">{text}</Text>
           <Text pl="3" as="span" color="red.500">
-            {props.errors && props.errors.message}
+            {errors && errors.message}
           </Text>
         </FormLabel>
         <InputGroup>
@@ -59,15 +67,19 @@ export default function TextInput(props: TextInputType) {
             rounded="none"
             backgroundColor="#F1F1F7"
             variant="filled"
-            onBlur={props.onBlur}
-            type={props.type}
-            name={props.name}
-            ref={props.register({ validate: props.validator || validateField })}
+            onBlur={onBlur}
+            type={type}
+            name={name}
+            ref={register({
+              validate: validator || validateField,
+            })}
             size="lg"
           />
-          <InputRightElement children={<ValidatedIcon errors={errors()} />} />
+          <InputRightElement children={<ValidatedIcon errors={error()} />} />
         </InputGroup>
       </FormControl>
     </Box>
   );
-}
+};
+
+export default TextInput;
