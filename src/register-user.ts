@@ -5,7 +5,7 @@ type Inputs = {
   password: string;
 };
 
-export default async function registerUser(values: Inputs) {
+const registerUser = async (values: Inputs) => {
   const payload = {
     campaignUuid: "46aa3270-d2ee-11ea-a9f0-e9a68ccff42a",
     data: {
@@ -33,3 +33,6 @@ export default async function registerUser(values: Inputs) {
       return err;
     });
 }
+
+
+export default registerUser

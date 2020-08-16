@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FunctionComponent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Text } from "@chakra-ui/core";
 import TextInput from "./text-input";
@@ -6,23 +6,23 @@ import registerUser from "./register-user";
 import validateEmail from "./validate-email";
 
 /**
- * LoginForm is the main component in this app. 
- * 
- * Features include: 
- *   - asynchronous email validation; 
- *   - basic form validations for an email string and checking that inputs contain 
+ * LoginForm is the main component in this app.
+ *
+ * Features include:
+ *   - asynchronous email validation;
+ *   - basic form validations for an email string and checking that inputs contain
  *     at least one character;
- *   - a disabled submit button until all form validations pass; success and error messages; 
+ *   - a disabled submit button until all form validations pass; success and error messages;
  *   - and responsive design.
- * 
+ *
  * One edge case I discovered is when an email has been submitted, but an account
  * has not been created (?). In this case, the async email validation passes (that is,
  * the server sends an "OK" and not an "EXISTS"), but when registration is submitted,
- * the server response with "This email (foo@bar.com) address has already been 
+ * the server response with "This email (foo@bar.com) address has already been
  * registered. Have you tried logging in?" I found this message from the server
  * helpful and displayed it to the user in a message above the form.
- * 
- * There are many improvements that could be made. The first I would make would be to 
+ *
+ * There are many improvements that could be made. The first I would make would be to
  * redirect the successful registrant to the next page. Others would be to expand
  * error handling. And consider the flow of data.
  */
@@ -34,8 +34,8 @@ type Inputs = {
   password: string;
 };
 
-export default function LoginForm() {
-  const [message, setMessage] = React.useState("");
+const LoginForm: FunctionComponent = () => {
+  const [message, setMessage] = useState("");
   const { register, handleSubmit, formState, errors, trigger, watch } = useForm<
     Inputs
   >();
@@ -89,13 +89,12 @@ export default function LoginForm() {
 
   return (
     <div>
-      {message ? (
+      {message && (
         <Text color="262861" fontStyle="italic" textAlign="center">
           {message}
         </Text>
-      ) : (
-        ""
       )}
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextInput
           name="email"
@@ -150,4 +149,6 @@ export default function LoginForm() {
       </form>
     </div>
   );
-}
+};
+
+export default LoginForm;
