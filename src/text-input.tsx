@@ -48,13 +48,9 @@ const TextInput: FunctionComponent<TextInputType> = ({
     return error || true;
   };
 
-  const error = (): boolean => {
-    return errors ? true : false;
-  };
-
   return (
     <Box mb={4}>
-      <FormControl isInvalid={error()}>
+      <FormControl isInvalid={Boolean(errors)}>
         <FormLabel fontSize="sm" color="#432CB3">
           <Text as="span">{text}</Text>
           <Text pl="3" as="span" color="red.500">
@@ -75,7 +71,9 @@ const TextInput: FunctionComponent<TextInputType> = ({
             })}
             size="lg"
           />
-          <InputRightElement children={<ValidatedIcon errors={error()} />} />
+          <InputRightElement
+            children={<ValidatedIcon errors={Boolean(errors)} />}
+          />
         </InputGroup>
       </FormControl>
     </Box>
