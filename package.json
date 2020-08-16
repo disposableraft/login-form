@@ -1,24 +1,18 @@
 {
   "name": "email-form",
+  "author": "Lance W",
   "homepage": "https://disposableraft.github.io/login-form",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
-    "react-hook-form": "^6.3.3",
     "@chakra-ui/core": "^0.8.0",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
     "emotion-theming": "^10.0.27",
+    "formik": "^2.1.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -47,6 +41,11 @@
   "devDependencies": {
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
-    "gh-pages": "^3.1.0"
+    "gh-pages": "^3.1.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0"
   }
 }
