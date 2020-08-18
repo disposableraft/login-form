@@ -1,13 +1,10 @@
 import React, { FunctionComponent } from "react";
-import { ThemeProvider, theme } from "@chakra-ui/core";
-import Page from "./page";
-
-// Here I add the theme provider and the page component.
+import Page from "./Page";
 
 const App: FunctionComponent = () => (
-  <ThemeProvider theme={theme}>
+  <div>
     <Page />
-  </ThemeProvider>
+  </div>
 );
 
 export default App;

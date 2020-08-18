@@ -5,34 +5,14 @@ type Inputs = {
   password: string;
 };
 
-const registerUser = async (values: Inputs) => {
-  const payload = {
-    campaignUuid: "46aa3270-d2ee-11ea-a9f0-e9a68ccff42a",
-    data: {
-      firstName: values.firstName,
-      lastName: values.lastName,
-      email: values.email,
-      password: values.password,
-    },
-  };
-  const req = new Request("https://api.raisely.com/v3/signup", {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    method: "POST",
-    body: JSON.stringify(payload),
-  });
-  return fetch(req)
-    .then((res) => res.json())
-    .then((data) => {
-      console.debug(data);
-      return data;
-    })
-    .catch((err) => {
-      console.error(err);
-      return err;
-    });
-}
+const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))
 
+const registerUser = async (values: Inputs): Promise<boolean> => {
+  await sleep(50)
+  if ((Math.random() * 10) % 3 === 0) {
+    return false;
+  }
+  return true
+}
 
 export default registerUser
