@@ -1,6 +1,8 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
+import { string, object } from "yup";
 import { Formik, Form, FormikHelpers } from "formik";
 import TextInput from "./TextInput";
+import emailExists from "./email-exists";
 
 type Inputs = {
   firstName: string;
@@ -8,6 +10,27 @@ type Inputs = {
   email: string;
   password: string;
 };
+
+const FormSchema = object().shape({
+  firstName: string()
+    .min(2, "Too short")
+    .max(100, "Too long!")
+    .required("Required"),
+  lastName: string()
+    .min(2, "Too short")
+    .max(100, "Too long!")
+    .required("Required"),
+  email: string()
+    .email("Invalid email")
+    .required("Required")
+    .test("does-email-exist", "Email exists", (value) => {
+      if (value && /\S+@\S+\.\S+/.test(value)) {
+        return emailExists(value);
+      }
+      return false;
+    }),
+  password: string().required("Required"),
+});
 
 const LoginForm: FunctionComponent = () => {
   const onSubmit = (values: Inputs, setSubmitting: any) => {
@@ -29,23 +52,8 @@ const LoginForm: FunctionComponent = () => {
         ) => {
           onSubmit(values, setSubmitting);
         }}
-        validate={(values) => {
-          let errors: any = {};
-          if (!values.firstName) {
-            errors.firstName = "Required";
-          }
-          if (!values.lastName) {
-            errors.lastName = "Required";
-          }
-          if (!values.email) {
-            errors.email = "Required";
-          }
-          if (!values.password) {
-            errors.password = "Required";
-          }
-          return errors;
-        }}
-      > 
+        validationSchema={FormSchema}
+      >
         <Form>
           <TextInput name="firstName" type="text" label="First Name" />
           <TextInput name="lastName" type="text" label="Last Name" />
