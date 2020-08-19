@@ -5,14 +5,23 @@ type Inputs = {
   password: string;
 };
 
-const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))
+type Errors = {
+  message: string;
+};
 
-const registerUser = async (values: Inputs): Promise<boolean> => {
-  await sleep(50)
-  if ((Math.random() * 10) % 3 === 0) {
-    return false;
+type RegistrationResponse = {
+  message?: string;
+  errors?: Errors[];
+};
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+const registerUser = async (values: Inputs): Promise<RegistrationResponse> => {
+  await sleep(50);
+  if (/test/.test(values.email)) {
+    return { errors: [{ message: "Sorry, no test emails!" }] };
   }
-  return true
-}
+  return { message: "OK" };
+};
 
-export default registerUser
+export default registerUser;
