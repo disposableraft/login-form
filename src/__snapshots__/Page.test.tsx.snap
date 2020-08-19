@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page renders and matches its snapshot 1`] = `
+<div>
+  <div
+    style="margin: auto; text-align: center;"
+  >
+    <h2
+      data-testid="welcome"
+    >
+      Welcome to a login form!
+    </h2>
+    <div
+      data-testid="form-login"
+    >
+      <form
+        action="#"
+      >
+        <div>
+          <label
+            for="firstName"
+          >
+            First Name
+          </label>
+          <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            value=""
+          />
+        </div>
+        <div>
+          <label
+            for="lastName"
+          >
+            Last Name
+          </label>
+          <input
+            id="lastName"
+            name="lastName"
+            type="text"
+            value=""
+          />
+        </div>
+        <div>
+          <label
+            for="email"
+          >
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            value=""
+          />
+        </div>
+        <div>
+          <label
+            for="password"
+          >
+            Password
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          data-testid="submit"
+          type="submit"
+        >
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;

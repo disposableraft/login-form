@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm Matches snapshot with values 1`] = `
+<div
+  data-testid="form-login"
+>
+  <form
+    action="#"
+  >
+    <div>
+      <label
+        for="firstName"
+      >
+        First Name
+      </label>
+      <input
+        id="firstName"
+        name="firstName"
+        type="text"
+        value="May you be happy"
+      />
+    </div>
+    <div>
+      <label
+        for="lastName"
+      >
+        Last Name
+      </label>
+      <input
+        id="lastName"
+        name="lastName"
+        type="text"
+        value="May you be happy"
+      />
+    </div>
+    <div>
+      <label
+        for="email"
+      >
+        Email
+      </label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        value="May you be happy"
+      />
+    </div>
+    <div>
+      <label
+        for="password"
+      >
+        Password
+      </label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        value="May you be happy"
+      />
+    </div>
+    <button
+      data-testid="submit"
+      type="submit"
+    >
+      Register
+    </button>
+  </form>
+</div>
+`;
+
+exports[`LoginForm Matches snapshot without values 1`] = `
+<div>
+  <div
+    data-testid="form-login"
+  >
+    <form
+      action="#"
+    >
+      <div>
+        <label
+          for="firstName"
+        >
+          First Name
+        </label>
+        <input
+          id="firstName"
+          name="firstName"
+          type="text"
+          value=""
+        />
+      </div>
+      <div>
+        <label
+          for="lastName"
+        >
+          Last Name
+        </label>
+        <input
+          id="lastName"
+          name="lastName"
+          type="text"
+          value=""
+        />
+      </div>
+      <div>
+        <label
+          for="email"
+        >
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          value=""
+        />
+      </div>
+      <div>
+        <label
+          for="password"
+        >
+          Password
+        </label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          value=""
+        />
+      </div>
+      <button
+        data-testid="submit"
+        type="submit"
+      >
+        Register
+      </button>
+    </form>
+  </div>
+</div>
+`;
