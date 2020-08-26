@@ -3,6 +3,8 @@ import { string, object } from "yup";
 import { Formik, Form, FormikHelpers } from "formik";
 import TextInput from "./TextInput";
 import emailExists from "./email-exists";
+import { Box } from "@chakra-ui/core";
+import SubmitButton from "./SubmitButton";
 
 type Inputs = {
   firstName: string;
@@ -38,7 +40,7 @@ const LoginForm: FunctionComponent = () => {
   };
 
   return (
-    <div data-testid="form-login">
+    <Box data-testid="form-login">
       <Formik
         initialValues={{
           firstName: "",
@@ -59,12 +61,10 @@ const LoginForm: FunctionComponent = () => {
           <TextInput name="lastName" type="text" label="Last Name" />
           <TextInput name="email" type="email" label="Email" />
           <TextInput name="password" type="password" label="Password" />
-          <button data-testid="submit" type="submit" disabled={false}>
-            Register
-          </button>
+          <SubmitButton label="Submit" name="submit" />
         </Form>
       </Formik>
-    </div>
+    </Box>
   );
 };
 
