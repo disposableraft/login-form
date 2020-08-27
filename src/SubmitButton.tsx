@@ -20,7 +20,14 @@ const SubmitButton: FunctionComponent<SubmitButtonType> = ({
 
   return (
     <Box pt={4}>
-      <Button isFullWidth={true} isDisabled={isDisabled()} data-testid="submit" type="submit">
+      <Button
+        variantColor="pink"
+        rounded={20}
+        isFullWidth={true}
+        isDisabled={isDisabled()}
+        data-testid="submit"
+        type="submit"
+      >
         {label}
       </Button>
     </Box>

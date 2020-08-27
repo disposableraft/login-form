@@ -44,7 +44,7 @@ const LoginForm: FunctionComponent = () => {
       data-testid="form-login"
       bg="white"
       rounded={10}
-      width={["100%", "450px"]}
+      width={["100%", "400px"]}
     >
       <Box p={6} w="100%">
         <Formik
