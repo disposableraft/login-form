@@ -3,7 +3,7 @@ import { string, object } from "yup";
 import { Formik, Form, FormikHelpers } from "formik";
 import TextInput from "./TextInput";
 import emailExists from "./email-exists";
-import { Box } from "@chakra-ui/core";
+import { Box, Flex, Stack } from "@chakra-ui/core";
 import SubmitButton from "./SubmitButton";
 
 type Inputs = {
@@ -40,30 +40,40 @@ const LoginForm: FunctionComponent = () => {
   };
 
   return (
-    <Box data-testid="form-login">
-      <Formik
-        initialValues={{
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-        }}
-        onSubmit={(
-          values: Inputs,
-          { setSubmitting }: FormikHelpers<Inputs>
-        ) => {
-          onSubmit(values, setSubmitting);
-        }}
-        validationSchema={FormSchema}
-      >
-        <Form>
-          <TextInput name="firstName" type="text" label="First Name" />
-          <TextInput name="lastName" type="text" label="Last Name" />
-          <TextInput name="email" type="email" label="Email" />
-          <TextInput name="password" type="password" label="Password" />
-        </Form>
-      </Formik>
-    </Box>
+    <Flex
+      data-testid="form-login"
+      bg="white"
+      rounded={10}
+      width={["100%", "450px"]}
+    >
+      <Box p={6} w="100%">
+        <Formik
+          initialValues={{
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+          }}
+          onSubmit={(
+            values: Inputs,
+            { setSubmitting }: FormikHelpers<Inputs>
+          ) => {
+            onSubmit(values, setSubmitting);
+          }}
+          validationSchema={FormSchema}
+        >
+          <Form>
+            <Stack spacing={4}>
+              <TextInput name="firstName" type="text" label="First Name" />
+              <TextInput name="lastName" type="text" label="Last Name" />
+              <TextInput name="email" type="email" label="Email" />
+              <TextInput name="password" type="password" label="Password" />
+              <SubmitButton label="Register" name="submit" />
+            </Stack>
+          </Form>
+        </Formik>
+      </Box>
+    </Flex>
   );
 };
 

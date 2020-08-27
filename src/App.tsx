@@ -1,11 +1,18 @@
 import React, { FunctionComponent } from "react";
-import { Box } from "@chakra-ui/core"
-import Page from "./Page";
+import { Flex, Heading } from "@chakra-ui/core";
+import LoginForm from "./LoginForm";
 
 const App: FunctionComponent = () => (
-  <Box bg="blue.300">
-    <Page />
-  </Box>
+  <Flex
+    justifyContent="center"
+    alignItems="center"
+    mt={-8}
+    h="100%"
+    direction="column"
+  >
+    <Heading pb={4} data-testid="welcome">Welcome to a registration form!</Heading>
+    <LoginForm />
+  </Flex>
 );
 
 export default App;
