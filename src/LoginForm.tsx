@@ -61,7 +61,6 @@ const LoginForm: FunctionComponent = () => {
           <TextInput name="lastName" type="text" label="Last Name" />
           <TextInput name="email" type="email" label="Email" />
           <TextInput name="password" type="password" label="Password" />
-          <SubmitButton label="Submit" name="submit" />
         </Form>
       </Formik>
     </Box>
