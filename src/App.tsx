@@ -6,7 +6,7 @@ const App: FunctionComponent = () => (
   <Flex
     justifyContent="center"
     alignItems="center"
-    mt={-8}
+    mt={-12}
     h="100%"
     direction="column"
   >

@@ -19,8 +19,8 @@ const SubmitButton: FunctionComponent<SubmitButtonType> = ({
   };
 
   return (
-    <Box>
-      <Button isDisabled={isDisabled()} data-testid="submit" type="submit">
+    <Box pt={4}>
+      <Button isFullWidth={true} isDisabled={isDisabled()} data-testid="submit" type="submit">
         {label}
       </Button>
     </Box>
