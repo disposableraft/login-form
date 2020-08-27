@@ -2,6 +2,7 @@
 
 exports[`LoginForm Matches snapshot with values 1`] = `
 <div
+  class="css-0"
   data-testid="form-login"
 >
   <form
@@ -59,12 +60,6 @@ exports[`LoginForm Matches snapshot with values 1`] = `
         value="May you be happy"
       />
     </div>
-    <button
-      data-testid="submit"
-      type="submit"
-    >
-      Register
-    </button>
   </form>
 </div>
 `;
@@ -72,6 +67,7 @@ exports[`LoginForm Matches snapshot with values 1`] = `
 exports[`LoginForm Matches snapshot without values 1`] = `
 <div>
   <div
+    class="css-0"
     data-testid="form-login"
   >
     <form
@@ -129,12 +125,6 @@ exports[`LoginForm Matches snapshot without values 1`] = `
           value=""
         />
       </div>
-      <button
-        data-testid="submit"
-        type="submit"
-      >
-        Register
-      </button>
     </form>
   </div>
 </div>

@@ -3,14 +3,16 @@
 exports[`Page renders and matches its snapshot 1`] = `
 <div>
   <div
-    style="margin: auto; text-align: center;"
+    class="css-edqvy"
   >
     <h2
+      class="css-84al3w"
       data-testid="welcome"
     >
       Welcome to a login form!
     </h2>
     <div
+      class="css-0"
       data-testid="form-login"
     >
       <form
@@ -68,12 +70,6 @@ exports[`Page renders and matches its snapshot 1`] = `
             value=""
           />
         </div>
-        <button
-          data-testid="submit"
-          type="submit"
-        >
-          Register
-        </button>
       </form>
     </div>
   </div>
