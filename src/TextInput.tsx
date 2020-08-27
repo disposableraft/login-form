@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { Input } from "@chakra-ui/core";
 import { useField } from "formik";
 
 type TextInputType = {
@@ -13,7 +14,7 @@ const TextInput: FunctionComponent<TextInputType> = ({ label, ...props }) => {
   return (
     <div>
       <label htmlFor={props.name}>{label}</label>
-      <input {...field} {...props} id={props.name} />
+      <Input variant="flushed" {...field} {...props} id={props.name} />
       {meta.touched && meta.error ? (
         <div data-testid={`error-${field.name}`}>{meta.error}</div>
       ) : null}
