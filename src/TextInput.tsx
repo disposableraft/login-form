@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Input } from "@chakra-ui/core";
+import { Input, FormControl, FormLabel, FormErrorMessage, Box } from "@chakra-ui/core";
 import { useField } from "formik";
 
 type TextInputType = {
@@ -12,13 +12,23 @@ const TextInput: FunctionComponent<TextInputType> = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
-    <div>
-      <label htmlFor={props.name}>{label}</label>
-      <Input variant="flushed" {...field} {...props} id={props.name} />
-      {meta.touched && meta.error ? (
-        <div data-testid={`error-${field.name}`}>{meta.error}</div>
-      ) : null}
-    </div>
+    <FormControl isInvalid={Boolean(meta.touched && meta.error)}>
+      <FormLabel display="none" htmlFor={props.name}>{label}</FormLabel>
+      <Input 
+        id={props.name} 
+        variant="flushed" 
+        placeholder={label} 
+        {...field} 
+        {...props} 
+        />
+        <Box 
+          display={Boolean(meta.touched && meta.error) ? 'none' : 'block'}
+          pb="17px"
+        />
+      <FormErrorMessage data-testid={`error-${field.name}`}>
+          {meta.error}
+      </FormErrorMessage>
+    </FormControl>
   );
 };
 
