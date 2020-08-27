@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent } from "./test.utils";
 import { Formik, Form } from "formik";
 import SubmitButton from "./SubmitButton";
 import TextInput from "./TextInput";
@@ -7,20 +7,20 @@ import TextInput from "./TextInput";
 describe("SubmitButton", () => {
   test("it is disabled by default'", () => {
     const { getByTestId } = render(
-      <Formik
-        initialValues={{
-          fooName: "",
-        }}
-        validate={() => {}}
-        onSubmit={() => {}}
-      >
-        {(props) => (
-          <Form>
-            <TextInput name="fooName" label="fooLabel" type="text" />
-            <SubmitButton name="submit" label="Submit" {...props} />
-          </Form>
-        )}
-      </Formik>
+        <Formik
+          initialValues={{
+            fooName: "",
+          }}
+          validate={() => {}}
+          onSubmit={() => {}}
+        >
+          {(props) => (
+            <Form>
+              <TextInput name="fooName" label="fooLabel" type="text" />
+              <SubmitButton name="submit" label="Submit" {...props} />
+            </Form>
+          )}
+        </Formik>
     );
 
     const submit = getByTestId("submit");
